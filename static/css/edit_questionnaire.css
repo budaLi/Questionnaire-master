@@ -1,0 +1,66 @@
+.hide {
+    display: none;
+}
+
+ol {
+    padding: 0;
+    list-style: none;
+    counter-reset: sectioncounter
+}
+
+.form-horizontal > li:before {
+    content: '问题' counter(sectioncounter) ':';
+
+    counter-increment: sectioncounter;
+    font-size: 18px;
+    color: #d4d4d4;
+
+}
+
+.form-horizontal li:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.form-horizontal li:nth-child(even) {
+    background-color: white;
+}
+
+.fork {
+
+    margin-left: 1000px;
+    font-size: 30px;
+    color: gainsboro;
+}
+
+.col-md-2 {
+    width: 13%;
+}
+
+.panel-body {
+    padding: 20px 50px;
+
+}
+
+.panel-body.edit_ques {
+    padding: 20px 0;
+
+}
+
+.pk {
+    padding: 20px;
+}
+
+.container-fluid {
+    margin-top: 50px
+}
+
+.table {
+    margin-top: 10px;
+}
+.col_fork{
+     font-size: 30px;
+    color: gainsboro;
+}
+.btn_style{
+    margin-left: 950px;margin-bottom: 10px
+}

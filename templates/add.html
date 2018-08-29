@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ 
+{% block page_title %}
+添加问卷
+{% endblock %}
+{% block content %}
+    <div class="panel-body ">
+    <form method="post" novalidate>
+    {% csrf_token %}
+            <div class="row">
+    <p class="col-md-6"><span>问卷标题：{{ form.title }}{{ form.errors.title.0 }}</span></p>
+    </div>
+    <div class="row">
+    <p class="col-md-3">问卷班级：{{ form.cls }}{{ form.errors.cls.0 }}</p>
+    </div>
+
+    <button class="btn btn-primary" type="submit">提交</button>
+
+    </form>
+    </div>
+{% endblock %}
+
+

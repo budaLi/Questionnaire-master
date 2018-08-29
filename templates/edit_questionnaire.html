@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    编辑问卷
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-body edit_ques">
+    <p class="btn_style">
+        <button class="btn btn-success add_question ">添加</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary btn_save">保存</button>
+    </p>
+    <ol class="question_list">
+        <form class="form-horizontal" method="post" novalidate>
+        {% csrf_token %}
+            {% for item in form_list %}
+                <li>
+                    <div pk="{{ item.obj.id }}" class="pk">
+                        <div class="form-group">
+                            <label for="id_caption" class="col-md-2 control-label">问题名称：</label>
+                            <div class="col-md-10">
+                                {{ item.form.caption }}{{ item.form.errors.caption.0 }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_ct" class="col-md-2 control-label">问题类型：</label>
+                            <div class="col-md-3 add_btn">
+                                {{ item.form.ct }}
+                            </div>
+                            <div class="col -md-2">
+                                <span style="font-size: 20px" class="add_choice"><a href="#add_choice" class="{{ item.options_cls }}">✚添加选项</a></span>
+                            </div>
+                        </div>
+                        <ul class="choice_list">
+                            {% for v in item.options %}
+                                <div id="{{ v.obj.id }}">
+                                    <div class="row col-md-10">
+                                        <label for="id_name" class="col-md-2 control-label">●&nbsp;内容：</label>
+                                        <div class="col-md-3">
+                                            {{ v.form.name }}
+                                        </div>
+                                        <label for="id_score" class="col-md-2 control-label">分值：</label>
+                                        <div class="col-md-3">
+                                            {{ v.form.score }}
+                                        </div>
+                                        <label class="col_fork">×</label>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                        <span class="fork">×</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </form>
+    </ol>
+    </div>
+
+
+{% endblock %}

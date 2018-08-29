@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page_title %}
+问卷列表
+{% endblock %}
+
+{% block content %}
+     <div class="panel-body ">
+           <div>
+                            <a href="/add_questionnaire/"><button class="btn btn-success">添加</button></a>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>调查问卷名称</th>
+                                    <th>调查问卷班级</th>
+                                    <th>参与人数</th>
+                                    <th>问卷选项</th>
+                                    <th>调查地址</th>
+                                    <th>查看评分</th>
+                                    <th>操作</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for questionnaire in questionnaire_list %}
+                                    <tr>
+
+                                        <td><a href="">{{ questionnaire.title }}</a></td>
+                                        <td>{{ questionnaire.cls.title }}</td>
+                                        <td>{{ questionnaire.stu_num }}/{{ questionnaire.cls.student_set.all.count }}</td>
+                                        <td><a href="/edit_questionnaire/{{ questionnaire.id }}/">编辑问卷</a></td>
+                                        <td>
+                                            <a href="/student/evaluate/{{ questionnaire.id }}/{{ questionnaire.cls.id }}/">/student/evaluate/{{ questionnaire.id }}/{{ questionnaire.cls.id }}/</a>
+                                        </td>
+                                        <td><a href="">查看评分</a></td>
+                                        <td><a href="">删除</a></td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+     </div>
+{% endblock %}
